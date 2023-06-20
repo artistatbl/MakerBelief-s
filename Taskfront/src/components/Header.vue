@@ -43,14 +43,14 @@
           bg-gray-900
           md:w-auto
           w-full
-          top-14
-          duration-700
+          left-0
+          duration-400
           ease-in
           fixed
         "
-        :class="[open ? 'left-0' : 'left-[-100%]']"
+        :class="[open ? 'top-14' : 'top-[-100%]']"
       >
-        <li class="md:mx-4 md:my-0 my-6" v-for="link in Links" :key="link.id">
+        <li class="md:mx-2 md:my-0 my-4" v-for="link in Links" :key="link.id">
           <a :href="link.link" class="text-xl hover:text-green-500">{{
             link.name
           }}</a>
@@ -63,17 +63,16 @@
 
 <script>
 import { ref } from "@vue/reactivity";
-//import Button from "./Button.vue";
+import Button from "./Button.vue";
 export default {
   components: {
-   //Button,
+   Button,
   },
   data() {
     let open = ref(false);
     let Links = [
       { name: " Article", link: "Article" },
       { name: "POST Article", link: "Addarticle" },
-      { name: "Profile", link: "Dashboard"}
   
     ];
     function MenuOpen() {
