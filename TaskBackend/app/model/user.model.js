@@ -257,54 +257,6 @@ const removeToken = (token, done) => {
 }
 
 
-const updateProfilePicture = (id, file, done) => {
-  const uploadDir = path.join(__dirname, '../uploads/profile_pictures');
-
-  // Create the uploads directory if it doesn't exist
-  if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-  }
-
-  // Generate a unique filename for the uploaded picture
-  const fileName = `profile_${id}_${Date.now()}${path.extname(file.originalname)}`;
-  const filePath = path.join(uploadDir, fileName);
-
-  // Save the file to the filesystem
-  fs.writeFile(filePath, file.buffer, (err) => {
-    if (err) {
-      return done(err);
-    }
-
-    // Update the user's profile picture in the database
-    const sql = 'UPDATE users SET profile_picture = ? WHERE user_id = ?';
-    const values = [fileName, id];
-
-    db.run(sql, values, (err) => {
-      if (err) {
-        return done(err);
-      }
-
-      return done(null, fileName);
-    });
-  });
-};
-
-
-const deleteProfilePicture = (id, done) => {
-  const sql = "UPDATE users SET profile_picture= NULL WHERE user_id = ?";
-
-  db.run(sql, [id], (err) => {
-    if (err) {
-      console.log(err);
-      return done(err);
-    }
-
-    return done(null);
-  });
-};
-
-
-
 
 module.exports = {
   addNewUser: addNewUser,
@@ -318,6 +270,5 @@ module.exports = {
   setToken: setToken,
   getIdFromToken: getIdFromToken,
   removeToken: removeToken,
-  updateProfilePicture: updateProfilePicture,
-  deleteProfilePicture: deleteProfilePicture,
+ 
 }

@@ -22,11 +22,6 @@ module.exports = function(app) {
   app.route("/users/:user_id")
     .get(users.getUserInfo);
 
-  app.route("/users/:user_id/profilePicture")
-    .post(auth.isAuthenticated, upload.single('picture'), users.uploadProfilePicture)
-    .put(auth.isAuthenticated, upload.single('picture'), users.updateProfilePicture)
-    .delete(auth.isAuthenticated, users.deleteProfilePicture);
-
   app.route("/verify-email/:verificationToken")
     .get(users.verifyEmail);
 };

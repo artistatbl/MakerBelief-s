@@ -8,29 +8,6 @@ const users = require("../model/user.model"),
 
 /////////////////////////////////////////////////////////////////////////
 
-const storage = multer.diskStorage({
-    destination: 'uploads/',
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-    }
-});
-
-// Multer file filter configuration
-// const fileFilter = function (req, file, cb) {
-//     if (
-//         file.mimetype === "image/jpeg" ||
-//         file.mimetype === "image/png" ||
-//         file.mimetype === "image/gif"
-//     ) {
-//         cb(null, true); // Accept the file if it matches the specified mimetypes
-//     } else {
-//         cb(new Error("Invalid file type. Only JPEG, PNG, and GIF files are allowed."), false); // Reject the file if it has an invalid mimetype
-//     }
-// };
-
-//Initialize the multer upload middleware
-
-const upload = multer({ storage: storage });
 
 
 // Function to handle email verification
@@ -213,116 +190,7 @@ const logout = (req, res) => {
 
 
 
-const uploadProfilePicture = (req, res) => {
-    const id = req.params.user_id;
 
-    if (!req.file) {
-        console.log('No profile picture uploaded');
-        return res.status(400).send({ message: 'No profile picture uploaded' });
-    }
-
-    const file = req.file;
-
-    users.updateProfilePicture(id, file, (err, fileName) => {
-        if (err) {
-            console.log('Error saving profile picture:', err);
-            return res.sendStatus(500);
-        }
-
-        console.log('Profile picture saved:', fileName);
-        return res.status(200).send({ profile_picture: fileName });
-    });
-};
-
-
-
-
-const updateProfilePicture = (req, res) => {
-    const userId = req.params.user_id;
-
-    upload.single('photo')(req, res, function (err) {
-        if (err) {
-            console.log(err);
-            return res.status(500).json({ message: "Failed to update profile picture" });
-        }
-
-        console.log("File:", req.file); // Log the file object
-
-        const file = req.file;
-
-        if (!file) {
-            console.log("No file provided");
-            return res.status(400).json({ message: "No file provided" });
-        }
-
-        console.log("File path:", file.path); // Log the file path
-
-        const filePath = file.path;
-
-        // Retrieve the user's current profile picture file path from the database
-        users.findById(userId, (err, user) => {
-            if (err) {
-                console.log(err);
-                return res.status(404).json({ message: "User do not exit!1" });
-            }
-
-            if (user.profile_picture) {
-                // Delete the old profile picture file
-                fs.unlink(user.profile_picture, (err) => {
-                    if (err) {
-                        console.log(err);
-                    }
-                });
-            }
-
-            // Update the user's profile picture in the database
-            users.updateProfilePicture(userId, filePath, (err) => {
-                if (err) {
-                    console.log(err);
-                    return res.status(500).json({ message: "Failed to update profile picture" });
-                }
-
-                return res.status(200).json({ message: "Profile picture updated successfully" });
-            });
-        });
-    });
-};
-
-const deleteProfilePicture = (req, res) => {
-    const userId = req.params.user_id;
-
-    // Retrieve the user's current profile picture file path from the database
-    users.findById(userId, (err, user) => {
-        if (err) {
-            console.log(err);
-            return res.status(404).json({ message: "User do not exist!!" });
-        }
-
-        if (!user.profile_picture) {
-            return res.status(404).json({ message: "Profile picture not found" });
-        }
-
-        const filePath = user.profile_picture;
-
-        // Delete the profile picture file
-        fs.unlink(filePath, (err) => {
-            if (err) {
-                console.log(err);
-                return res.status(500).json({ message: "Failed to delete profile picture" });
-            }
-
-            // Update the user's profile picture in the database
-            users.updateProfilePicture(userId, null, (err) => {
-                if (err) {
-                    console.log(err);
-                    return res.status(500).json({ message: "Failed to delete profile picture" });
-                }
-
-                return res.status(200).json({ message: "Profile picture deleted successfully" });
-            });
-        });
-    });
-};
 
 module.exports = {
 
@@ -331,9 +199,6 @@ module.exports = {
     getUserInfo: getUserInfo,
     login: login,
     logout: logout,
-    uploadProfilePicture: uploadProfilePicture,
-    updateProfilePicture: updateProfilePicture,
-    deleteProfilePicture: deleteProfilePicture,
     verifyEmail: verifyEmail,
 
 
