@@ -72,7 +72,7 @@ export default {
     let open = ref(false);
     let Links = [
       { name: " Article", link: "Article" },
-      { name: "POST Article", link: "Addarticle" },
+      //{ name: "POST Article", link: "Addarticle" },
   
     ];
     function MenuOpen() {

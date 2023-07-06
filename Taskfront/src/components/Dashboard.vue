@@ -14,7 +14,6 @@
 </template>
 
 
-
 <script>
 import { logoutService } from "../service/logout.service";
 import { AddUserService } from "../service/user.service";
@@ -42,20 +41,6 @@ export default {
         console.log("You have been logged out");
         this.$router.push("/login");
       });
-    },
-    uploadProfilePicture(event) {
-      const file = event.target.files[0];
-      const user_id = getUserId(); // Replace with the actual user ID
-
-      AddUserService.addProfilePicture(user_id, file)
-        .then((data) => {
-          console.log("Profile picture uploaded:", data);
-          // Perform any additional actions or update UI
-        })
-        .catch((error) => {
-          console.error("Error uploading profile picture:", error);
-          // Handle the error or display an error message
-        });
     },
   },
 };

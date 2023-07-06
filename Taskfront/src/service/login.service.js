@@ -26,7 +26,10 @@ const login = (email, password) => {
         localStorage.setItem("session_token", resJson.session_token);
         localStorage.setItem("first_name", resJson.first_name);
         localStorage.setItem("last_name", resJson.last_name);
-       
+        
+        //Updatee the UI or DOM elemeenst with user information
+        //updateUserInfo(resJson);
+
         return resJson;
     })
     .catch((error) =>{
@@ -35,36 +38,17 @@ const login = (email, password) => {
     })
 }
 
+// // Function to update the UI with user information
+// const updateUserInfo = (userInfo) => {
+//   const welcomeMsg = document.getElementById("welcome-msg");
+//   welcomeMsg.innerText = `Welcome ${userInfo.first_name} ${userInfo.last_name}!`;
 
-const getUserInfo = (user_id) => {
-    return fetch(`http://localhost:3333/users/${user_id}`, {
-      method: 'GET',
-      headers: {
-        "X-Authorization": localStorage.getItem("session_token"),
-        'Content-Type': 'application/json'
-      },
-    })
-      .then(response => {
-        if (response.status === 200) {
-          return response.json();
-        } else if (response.status === 404) {
-          throw "User not found";
-        } else {
-          throw response.statusText;
-        }
-      })
-      .then((resJson) => {
-        return resJson
-      })
-      .catch((error) => {
-        console.log("Err", error)
-  
-        return Promise.reject(error)
-  
-      })
-  }
+//   // Update other UI elements as needed
+// };
+
 
 export const usersService = {
     login,
-    getUserInfo
+   // updateUserInfo,
+    
 }

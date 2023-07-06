@@ -8,19 +8,18 @@
 
     <em v-if="loading">Loading articles...</em>
 
-      <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div class="">
       <router-link
         v-for="article in articles"
         :key="article.article_id"
         :to="'/articleView/' + article.article_id"
-        class="flex items-center justify-center px-5 py-5 bg-gray-900 rounded-md shadow-md transform transition-transform hover:scale-105 hover:rotate-2"
+        class=""
       >
-        <div class="text-center">
-          <h2 class="text-blue-600 font-bold mb-2">{{ article.title }}</h2>
-          <p class="text-gray-700 mb-4">{{ article.author }}</p>
-          <p class="text-gray-600">{{ article.article_text }}</p>
-        </div>
-      </router-link>
+          <span class="text-red-500 font-bold pl-1 pr-3"
+              >by {{ article.author }}</span
+            >
+            <span class="">{{ article.title }}</span>
+          </router-link>
     </div>
     
 
