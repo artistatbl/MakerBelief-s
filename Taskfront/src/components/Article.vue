@@ -2,7 +2,7 @@
  <div>
   <Header></Header>
 
-  <h1 class="text-center mt-4 mb-5 text-gray-900 font-black text-3xl">
+  <h1 class="text-center tracking-widest mt-4 mb-5 text-gray-900 font-black text-3xl">
     Today's Articles
   </h1>
 

@@ -50,7 +50,7 @@
         "
         :class="[open ? 'top-14' : 'top-[-100%]']"
       >
-        <li class="md:mx-2 md:my-0 my-4" v-for="link in Links" :key="link.id">
+        <li class="md:mx-10 md:my-0 my-1" v-for="link in Links" :key="link.id">
           <a :href="link.link" class="text-xl hover:text-green-500">{{
             link.name
           }}</a>
