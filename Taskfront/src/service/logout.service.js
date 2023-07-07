@@ -4,7 +4,6 @@ const logOut = () => {
         method: "POST",
         headers: {
            "X-Authorization": localStorage.getItem("session_token")
-
         }
        
     })

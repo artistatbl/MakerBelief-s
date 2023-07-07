@@ -1,27 +1,31 @@
 <template>
-  <div>
-    <Header></Header>
+ <div>
+  <Header></Header>
 
-    <h1 class="text-center mt-4 mb-5 text-gray-900 font-bold text-3xl">
-      Today's Articles
-    </h1>
+  <h1 class="text-center mt-4 mb-5 text-gray-900 font-bold text-3xl">
+    Today's Articles
+  </h1>
 
-    <em v-if="loading">Loading articles...</em>
+  <em v-if="loading" class="text-red-500">Loading articles...</em>
 
-      <div class="">
-      <router-link
-        v-for="article in articles"
-        :key="article.article_id"
-        :to="'/articleView/' + article.article_id"
-        class=""
-      >
-          <span class="text-red-500 font-bold pl-1 pr-3"
-              >by {{ article.author }}</span
-            >
-            <span class="">{{ article.title }}</span>
+ 
+     <div class="bg-white border border-gray-300 mt-5 rounded-xl shadow-m py-5 px-5 max-w-1xl m-auto">
+      <div class="scrollable-grid">
+        <div class="flex flex-wrap grid grid-cols-1 gap-4">
+          <router-link
+            v-for="article in articles"
+            :key="article.article_id"
+            :to="'/articleView/' + article.article_id"
+            class="flex items-center rounded-md hover:bg-gray-100 shadow-md p-4 m-1"
+          >
+            <span class="text-red-500 font-bold mr-3">by {{ article.author }}</span>
+            <span class="text-gray-900">{{ article.title }}</span>
           </router-link>
+        </div>
+      </div>
     </div>
-    
+
+
 
     <div v-if="error" class="text-red-500 mt-4">
       {{ error }}
@@ -62,33 +66,9 @@ export default {
 };
 </script>
 
-<style>
-.display {
-  display: block !important;
-}
-.none {
-  display: none !important;
-}
-
-.transform {
-  transform-style: preserve-3d;
-}
-
-.hover\:scale-105:hover {
-  transform: scale(1.05);
-}
-
-.hover\:rotate-2:hover {
-  transform: rotate(2deg);
-}
-
-.bg-white {
-  background-color: #ffffff;
-  /* Add your desired background color here */
-}
-
-.shadow-md {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  /* Add your desired shadow styles here */
+<style scoped>
+.scrollable-grid {
+  max-height: 400px;
+  overflow-y: auto;
 }
 </style>
