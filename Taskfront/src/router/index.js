@@ -7,16 +7,9 @@ import Signup from "../components/Signup.vue"
 import Dashboard  from "../components/Dashboard.vue"
 import NotFound from '../components/NotFound.vue'
 import Article from "../components/Article.vue"
+import ArticleView from "../components/ArticleView.vue"
 
 
-const ifAuthenticated = (to, from, next) => {
-    const loggedIn = localStorage.getItem('session_token');
-    if (loggedIn) {
-        next()
-        return
-    }
-    next('/Login')
-}
 
 const routes = [
 
@@ -50,6 +43,11 @@ const routes = [
         path: "/Article",
         component: Article
     
+    },
+    {
+        path: "/ArticleView/:id",
+        component: ArticleView
+
     },
 
     {
