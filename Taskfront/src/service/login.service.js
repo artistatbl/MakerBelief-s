@@ -16,7 +16,7 @@ const login = (email, password) => {
         if(response.status === 200){
             return response.json();
         }else if(response.status === 400){
-            throw "Invalid Email or Passwords"
+            throw "Invalid Email or Password"
         }else{
             throw "Something went wrong"
         }

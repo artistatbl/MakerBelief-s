@@ -17,7 +17,7 @@ const addUser = (first_name, last_name, email, password) => {
       } else if (response.status === 400) {
         throw new Error('Invalid request');
       } else {
-        throw new Error('Something went wrong');
+        throw new Error('This email has already been use!');
       }
     })
     .then(data => {

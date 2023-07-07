@@ -154,8 +154,14 @@ export default {
         .catch((error) => {
           this.error = error;
           this.loading = false;
+          this.refreshError();
         });
     },
+    refreshError(){
+      setTimeout(()=>{
+        this.error = "";
+      }, 1000);
+    }
   },
 };
 </script>
