@@ -8,6 +8,7 @@ import Dashboard  from "../components/Dashboard.vue"
 import NotFound from '../components/NotFound.vue'
 import Article from "../components/Article.vue"
 import ArticleView from "../components/ArticleView.vue"
+import VerifyEmail from "../components/VerifyEmail.vue"
 
 
 
@@ -47,6 +48,11 @@ const routes = [
     {
         path: "/ArticleView/:id",
         component: ArticleView
+
+    },
+    {
+        path: "/VerifyEmail/:verificationToken",
+        component: VerifyEmail
 
     },
 
