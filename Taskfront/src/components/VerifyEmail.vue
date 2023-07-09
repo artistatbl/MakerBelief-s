@@ -1,16 +1,11 @@
 <template>
-  <div class="flex items-center justify-center h-screen mx-auto text-center ">
-    <div class="box bg-white border border-gray-300 shadow-lg rounded p-14 mx-auto">
-      <h1 class="text-xl font-bold mb-4 ">Verify Your Email</h1>
-      <p class="text-gray-600 mb-6 ">
-        Click the button below to verify your email
-      </p>
-      <a
-        :href="verificationLink"
-        class="inline-block px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600 mx-auto"
-        >Verify Email</a
-      >
-    </div>
+  <div class="flex flex-col items-center text-center justify-center h-screen">
+	  <div class= "bg-white border border-gray-300 shadow-lg rounded p-10">
+    <h1 class="text-xl font-bold mb-4">Verify Your Email</h1>
+    <p class="text-gray-600 mb-6">Click the button below to verify your email:</p>
+    <button class="btn-verify" @click="verifyEmail">Verify Email</button>
+    <p v-if="verificationStatus">{{ verificationStatus }}</p>
+  </div>
   </div>
 </template>
 
@@ -26,20 +21,29 @@ export default {
   methods: {
     verifyEmail() {
       const verificationToken = this.$route.params.verificationToken;
-      emailService
-        .verifyEmail(verificationToken)
+      emailService.verifyEmail(verificationToken)
         .then(() => {
           this.verificationStatus = "Email verification successful";
         })
         .catch((error) => {
-          this.verificationStatus =
-            "Email verification failed: " + error.message;
+          this.verificationStatus = "" + error.message;
         });
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.btn-verify {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
+.btn-verify:hover {
+  background-color: #0056b3;
+}
 </style>
