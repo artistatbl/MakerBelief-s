@@ -18,3 +18,6 @@ One of the key features of the application is the user profile page, where users
 Additionally, the project includes a password reset functionality to ensure account security. If users forget their password, they can initiate a password reset process and regain access to their account.
 
 This project is an ongoing endeavor, with more features planned for the future. The goal is to enhance the user experience and expand the functionality to meet the evolving needs of the users. By providing a seamless login and signup process, article/task management capabilities, user profiles, and password reset functionality, the application aims to offer a comprehensive platform for users to engage and interact effectively.
+
+
+update?
