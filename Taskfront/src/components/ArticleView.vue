@@ -28,6 +28,8 @@
         <div class="font-light text-gray-900 font-serif">
           {{ "Edited: " + article.date_edited }}
         </div>
+	   <br> 
+
         <div
           class="text-center sm:text-left font-light text-gray-900 font-serif"
         >

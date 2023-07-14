@@ -20,6 +20,13 @@ const dummyData = [
         date_edited: null,
         created_by: "shannon",
     },
+    {
+        title: "Task Why is important ",
+        task_text: "This is the third task. This is the second task. This is the second task.",
+        date_published: Date.now(),
+        date_edited: 14/7/2023,
+        created_by: "artist",
+    },
 ];
 
 
