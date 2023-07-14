@@ -4,22 +4,22 @@
 
     <em v-if="loading">Loading articles...</em>
 
-    <h2 class="text-center p-10 text-2xl">Article</h2>
+    <h2 class="text-center font-black p-10 text-4xl">Article</h2>
 
     <div
-      class="box-content min-h-screen tex-gray-800 antialiased px-20 py-1 flex flex-col justify-block sm:py-1"
+      class="box-content min-h-screen tex-gray-800 antialiased px-20 py-1 flex flex-col justify-block sm:py-5"
     >
       <br />
       <div
-        class="font-black font-serif shadow-2xl outline-double outline-2 outline-offset-2 p-4 py-5"
+        class="font-black font-mono shadow-2xl outline-double outline-1  p-5 py-6"
       >
         {{ article.title }}
       </div>
 
       <div
-        class="shadow-2xl p-10 px-5 outline-double outline-2 outline-offset-2"
+        class="shadow-2xl p-10 px-5 outline-double outline-1 p-4 py-10"
       >
-        <div class="font-medium font-serif">
+        <div class="font-black font-serif">
           {{ "Written By:  " + article.author }}
         </div>
         <div class="font-light text-gray-900 font-serif">
@@ -28,13 +28,14 @@
         <div class="font-light text-gray-900 font-serif">
           {{ "Edited: " + article.date_edited }}
         </div>
+        <br>
         <div
-          class="text-center sm:text-left font-light text-gray-900 font-serif"
+          class="text-center sm:text-left font-light text-gray-900 font-mono"
         >
           {{ article.article_text }}
         </div>
 
-        <div class="font-thin text-sm text-right text-gray-600 font-serif">
+        <div class="font-lighter text-sm text-right text-gray-600 font-mono m-5">
           {{ "Created By: " + article.created_by }}
         </div>
         <button
