@@ -81,10 +81,12 @@ export default {
   position: fixed;
   top: 20px;
   left: 50%;
+  text-align: center;
   transform: translateX(-50%);
   background-color: #333;
   color: #fff;
-  padding: 10px;
+  padding: 15px;
+  width: 25%;
   border-radius: 4px;
 }
 .toast.success {
