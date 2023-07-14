@@ -34,9 +34,11 @@
     </div>
 
     <!-- Toast Notification -->
+    <transition name="fade">
     <div v-if="showToast" :class="['toast', toastType]">
       {{ toastMessage }}
     </div>
+    </transition>
   </div>
 </template>
 
@@ -88,6 +90,7 @@ export default {
   padding: 15px;
   width: 25%;
   border-radius: 4px;
+  opacity: 0;
 }
 .toast.success {
   background-color: #2ecc71; /* Green background for success */
@@ -96,4 +99,17 @@ export default {
 .toast.error {
   background-color: #e74c3c; /* Red background for error */
 }
+/* Define the fade-in animation */
+.fade-enter-active {
+  transition: opacity 2s;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
 </style>
