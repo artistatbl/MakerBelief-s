@@ -2,14 +2,14 @@
 	"version": 2,
 	"builds": [
 	  {
-	    "src": "taskbackend/index.js",
+	    "src": "./TaskBackend/index.js",
 	    "use": "@vercel/node"
 	  }
 	],
 	"routes": [
 	  {
 	    "src": "/(.*)",
-	    "dest": "/"
+	    "dest": "./TaskBackend/index.js"
 	  }
 	]
    }
