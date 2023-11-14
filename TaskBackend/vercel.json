@@ -2,14 +2,14 @@
      "version": 2,
      "builds": [
           {
-               "taskbackend": "./server.json",
+               "src": "./server.json",
                "use": "@vercel/node"
           }
      ],
 
      "routes": [
           {
-               "taskbackend": "/(.*)",
+               "src": "/(.*)",
                "dest": "/"
           }
      ]
