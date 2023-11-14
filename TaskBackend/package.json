@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha ./tests/test.*.js --reporter spec --log-level=warn --timeout 10000",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "author": "Artist",
   "license": "MIT",

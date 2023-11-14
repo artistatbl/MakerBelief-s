@@ -1,18 +1,16 @@
 {
-	"version": 2,
-	"builds": [
-	  {
-	    "src": "taskfront",
-	    "use": "@vercel/static-build"
-	  },
-	  {
-	    "src": "blog-engine-server",
-	    "use": "@vercel/node"
-	  }
-	],
-	"routes": [
-	  { "src": "/api/(.*)", "dest": "/blog-engine-server/$1" },
-	  { "src": "/(.*)", "dest": "/taskfront/$1" }
-	]
-   }
-   
+     "version": 2,
+     "builds": [
+          {
+               "src": "./server.json",
+               "use": "@vercel/node"
+          }
+     ],
+
+     "routes": [
+          {
+               "TaskBackend": "/(.*)",
+               "dest": "/"
+          }
+     ]
+}

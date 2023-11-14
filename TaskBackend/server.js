@@ -9,7 +9,7 @@ app.use(cors())
 
 
 // Server port
-const HTTP_PORT = 3333
+const HTTP_PORT = 1000
 
 // Start server
 app.listen(HTTP_PORT, () => {

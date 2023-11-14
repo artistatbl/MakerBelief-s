@@ -19,11 +19,11 @@
             <!-- Logo -->
             <!-- Logo with margin -->
 
-            <img
+            <!-- <img
               src="logo.png"
               alt="Logo"
               class="mx-auto my-4 mt-2 mb-4 w-20 h-20"
-            />
+            /> -->
             
 
             <div class="py-6 px-8">
