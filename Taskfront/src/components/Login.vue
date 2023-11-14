@@ -19,12 +19,14 @@
             <!-- Logo -->
             <!-- Logo with margin -->
 
+
             <!-- <img
               src="logo.png"
               alt="Logo"
               class="mx-auto my-4 mt-2 mb-4 w-20 h-20"
             /> -->
-            
+
+        
 
             <div class="py-6 px-8">
               <h2 class="text-gray-900 text-center text-3xl font-mono mb-6">
