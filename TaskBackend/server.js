@@ -9,11 +9,11 @@ app.use(cors())
 
 
 // Server port
-const HTTP_PORT = 1000
+const Port  =  process.env.PORT || 1000
 
 // Start server
-app.listen(HTTP_PORT, () => {
-    console.log("Server running on port: " + HTTP_PORT)
+app.listen(Port, () => {
+    console.log("Server running on port: " + Port)
 });
 //
 // Logging
