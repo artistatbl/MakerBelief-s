@@ -4,7 +4,7 @@
   "description": "Task Manager",
   "main": "server.js",
   "engines": {
-    "node": "14.x"
+    "node": "18.x"
   },
   "scripts": {
     "test": "mocha ./tests/test.*.js --reporter spec --log-level=warn --timeout 10000",
