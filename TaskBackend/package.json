@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha ./tests/test.*.js --reporter spec --log-level=warn --timeout 10000",
-    "dev": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "Artist",
   "license": "MIT",
@@ -32,6 +32,7 @@
     "nodemon": "^2.0.21",
     "path": "^0.12.7",
     "sqlite3": "^5.1.4",
-    "validator": "^13.9.0"
+    "validator": "^13.9.0",
+    "vercel": "^32.5.3"
   }
 }
