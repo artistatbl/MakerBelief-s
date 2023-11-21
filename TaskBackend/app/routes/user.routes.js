@@ -1,8 +1,6 @@
 const users = require("../controller/user.controller");
 const auth = require('../lib/authentication');
 const multer = require('multer');
-
-// Set up Multer for file uploads
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
@@ -24,4 +22,6 @@ module.exports = function(app) {
 
   app.route("/verify-email/:verificationToken")
     .get(users.verifyEmail);
+  app.route('/users/upload-profile-picture/:user_id')
+    .post(auth.isAuthenticated, upload.single('profilePicture'), users.uploadProfilePicture);
 };

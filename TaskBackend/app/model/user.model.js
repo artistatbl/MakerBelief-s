@@ -256,6 +256,24 @@ const removeToken = (token, done) => {
   })
 }
 
+//Add a new function to update the user with profile picture in the database
+
+const updateProfilePicture = (userId, profilePicture, done) => {
+  const updateQuery = 'UPDATE users SET profile_picture = ? WHERE user_id ? WHERE user_id = ?';
+  db.run(updateQuery, [userId, profilePicture], (err) => {
+    if (err) {
+
+      return done (err);
+
+    }
+
+    return done(null)
+
+     
+  });
+};
+
+
 
 
 module.exports = {
@@ -270,5 +288,6 @@ module.exports = {
   setToken: setToken,
   getIdFromToken: getIdFromToken,
   removeToken: removeToken,
+  updateProfilePicture: updateProfilePicture,
  
 }

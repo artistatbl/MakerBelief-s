@@ -13,7 +13,7 @@
     </em>
 
     <div
-      class="bg-white border border-gray-300 mt-5 rounded-xl shadow-m py-5 px-5 max-w-6xl m-auto"
+      class="bg-white border  border-gray-300 mt-5 rounded-xl shadow-m py-5 px-5 max-w-6xl m-auto"
     >
       <div class="scrollable-grid">
         <div

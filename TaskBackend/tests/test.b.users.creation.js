@@ -191,3 +191,25 @@ describe("Test successful creation of users.", () => {
                 });
         });
     });
+
+
+    describe("Test profile picture upload.", () => {
+        before(() => {
+            console.log("[Script: " + filename + "]");
+        });
+    
+        it("Should return 200, and JSON with a success message for profile picture upload.", () => {
+            return chai.request(SERVER_URL)
+                .post(`/users/upload-profile-picture/${USER_ID_WITH_PROFILE}`)
+                .set('X-Authorization', ADMIN_TOKEN)
+                .attach('profilePicture', fs.readFileSync('path/to/your/test/image.jpg'), 'image.jpg')
+                .then((res) => {
+                    expect(res).to.have.status(200);
+                    expect(res).to.be.json;
+                    expect(res.body).to.have.property("message").that.includes("Profile picture uploaded successfully");
+                })
+                .catch((err) => {
+                    throw err;
+                });
+        });
+    });

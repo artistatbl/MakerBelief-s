@@ -188,8 +188,38 @@ const logout = (req, res) => {
 }
 
 
+const uploadProfilePicture = (req, res) => {
+    const user_id = req.params.user_id;
 
+    // Check if the request contains a file
+    if (!req.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
 
+    const profilePictureData = req.file.buffer; // Get the file buffer
+    const profilePicturePath = `uploads/profile-${user_id}-${Date.now()}.png`; // Adjust file naming as needed
+
+    // Save the file to the uploads directory
+    fs.writeFileSync(profilePicturePath, profilePictureData);
+
+    // Update the user's profile picture path in the database
+    const updateQuery = 'UPDATE users SET profile_picture = ? WHERE user_id = ?';
+    db.run(updateQuery, [profilePicturePath, user_id], function (error) {
+        if (error) {
+            console.error('Error updating profile picture:', error);
+            return res.status(500).json({ message: 'Error updating profile picture in the database' });
+        }
+
+        return res.status(200).json({ message: 'Profile picture uploaded successfully' });
+    });
+};
+
+const uploadDirectory = path.join(__dirname, 'uploads', 'profile-pictures');
+
+// Create the uploads directory if it doesn't exist
+if (!fs.existsSync(uploadDirectory)) {
+  fs.mkdirSync(uploadDirectory, { recursive: true });
+}
 
 
 module.exports = {
@@ -200,6 +230,8 @@ module.exports = {
     login: login,
     logout: logout,
     verifyEmail: verifyEmail,
+    uploadProfilePicture:uploadProfilePicture,
+    
 
 
 }
