@@ -21,6 +21,7 @@ const dummyData = [
         created_by: "shannon",
     },
     {
+<<<<<<< HEAD
         title: "Task 1...",
         task_text: "This is the first task.",
         date_published: Date.now(),
@@ -61,6 +62,13 @@ const dummyData = [
         date_published: Date.now(),
         date_edited: null,
         created_by: "shannon",
+=======
+        title: "Task Why is important ",
+        task_text: "This is the third task. This is the second task. This is the second task.",
+        date_published: Date.now(),
+        date_edited: 14/7/2023,
+        created_by: "artist",
+>>>>>>> dec6c16caf9a7f7fdeb9da9eeeaee93cca0878bf
     },
 ];
 

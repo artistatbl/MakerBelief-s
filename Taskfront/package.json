@@ -20,6 +20,7 @@
     "router": "^1.3.8",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
+    "vue-toastification": "^1.7.14",
     "vue3-toastify": "^0.1.11"
   },
   "devDependencies": {

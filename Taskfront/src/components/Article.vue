@@ -3,7 +3,7 @@
     <Header></Header>
 
     <h1
-      class="text-center tracking-widest mt-4 mb-5 text-gray-900 font-black text-3xl"
+      class="text-center tracking-widest mt-4 mb-5 text-gray-900 font-black text-3xl "
     >
       Today's Articles
     </h1>
@@ -17,7 +17,7 @@
     >
       <div class="scrollable-grid">
         <div
-          class="flex flex-wrap grid grid-cols-1 gap-4 border border-gray-500"
+          class="flex flex-wrap grid grid-cols-1 gap-4 border border-gray-900"
         >
         <ul class="" v-if="articles.length">
           <li 
@@ -27,7 +27,7 @@
 
           <router-link
             :to="'/articleView/' + article.article_id"
-            class="flex items-center rounded-md hover:bg-gray-100 border border-gray-500 shadow-xl p-4 m-1"
+            class="flex items-center rounded-xl hover:bg-gray-100 border border-gray-900 shadow-xl p-8 m-3"
           >
             <span
               class="text-red-500 font-thiner tracking-tighter mr-3 font-mono"

@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 
 // Function to send the verification email
 const sendVerificationEmail = (email, verificationToken) => {
-  const verificationLink = `http://localhost:3333/verify-email/${verificationToken}`; // Replace with the actual URL of your API endpoint
+  const verificationLink = `http://127.0.0.1:5173/verifyemail/${verificationToken}`; // Replace with the actual URL of your API endpoint
 
   const mailOptions = {
     from: 'jdaly2991@gmail.com', // Replace with your email address
