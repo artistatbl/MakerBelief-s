@@ -189,30 +189,52 @@ const logout = (req, res) => {
 
 
 const uploadProfilePicture = (req, res) => {
-    const user_id = req.params.user_id;
+    const userId = parseInt(req.params.user_id);
 
-    // Check if the request contains a file
-    if (!req.file) {
-        return res.status(400).json({ message: 'No file uploaded' });
-    }
-
-    const profilePictureData = req.file.buffer; // Get the file buffer
-    const profilePicturePath = `uploads/profile-${user_id}-${Date.now()}.png`; // Adjust file naming as needed
-
-    // Save the file to the uploads directory
-    fs.writeFileSync(profilePicturePath, profilePictureData);
-
-    // Update the user's profile picture path in the database
-    const updateQuery = 'UPDATE users SET profile_picture = ? WHERE user_id = ?';
-    db.run(updateQuery, [profilePicturePath, user_id], function (error) {
-        if (error) {
-            console.error('Error updating profile picture:', error);
-            return res.status(500).json({ message: 'Error updating profile picture in the database' });
+    // Check if the user exists in the database
+    users.findById(userId, (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.sendStatus(500);
         }
 
-        return res.status(200).json({ message: 'Profile picture uploaded successfully' });
+        if (!result) {
+            console.log(`User not found with ID: ${userId}`);
+            return res.sendStatus(404); // Return 404 if the user is not found
+        }
+
+        // Process the file upload
+        const profilePicture = req.file;
+
+        // Check if a file is provided
+        if (!profilePicture) {
+            return res.status(400).send('No file uploaded.');
+        }
+
+        // Save the file to the desired location (you may want to customize this based on your requirements)
+        const fileName = `profile-${userId}-${Date.now()}.png`;
+        const filePath = path.join(__dirname, '../../uploads/', fileName);
+
+        fs.writeFile(filePath, profilePicture.buffer, (err) => {
+            if (err) {
+                console.error('Error saving profile picture:', err);
+                return res.sendStatus(500);
+            }
+
+            // Update the user's profile_picture field in the database
+            const updateQuery = 'UPDATE users SET profile_picture = ? WHERE user_id = ?';
+            db.run(updateQuery, [fileName, userId], (error) => {
+                if (error) {
+                    console.error('Error updating profile picture in the database:', error);
+                    return res.sendStatus(500);
+                }
+
+                return res.status(200).send({ message: 'Profile picture uploaded successfully.' });
+            });
+        });
     });
 };
+
 
 const uploadDirectory = path.join(__dirname, 'uploads', 'profile-pictures');
 
